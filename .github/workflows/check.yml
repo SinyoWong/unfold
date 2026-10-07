@@ -1,0 +1,34 @@
+name: Offline checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            python: '3.10'
+          - os: windows-latest
+            python: '3.13'
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Repository documents and Skill metadata
+        run: python -X utf8 evals/check_repo.py
+      - name: Business acceptance fixtures
+        run: python -X utf8 evals/check.py --selftest
+      - name: Published net sales example
+        run: python -X utf8 examples/sales/net/test_sales.py
+      - name: Published handoff example
+        run: python -X utf8 evals/check.py --case sales-handoff --workspace examples/sales/separate

@@ -1,0 +1,3 @@
+* text=auto eol=lf
+# Preserve the runnable handoff examples byte-for-byte.
+examples/sales/*/*.py -text whitespace=cr-at-eol

@@ -1,0 +1,27 @@
+__pycache__/
+*.pyc
+.venv/
+.agents/
+# Keep experiments, old documentation and production materials local.
+/evals/results/
+/evals/compare.py
+/evals/comparison/
+/evals/interactive/
+/deliverables/
+/CONTRIBUTING.md
+/CHANGELOG.md
+/docs/install.md
+/docs/install.en.md
+/docs/releasing.md
+/media/
+/releases/
+node_modules/
+.unfold-skill-backups/
+.env
+.env.*
+!.env.example
+auth.json
+*.pem
+*.key
+.DS_Store
+Thumbs.db
